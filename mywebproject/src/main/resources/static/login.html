@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<script src="library/jquery-3.4.1/jquery-3.4.1.min.js"></script>
+<link href="library/bootstrap-4.3.1-dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="library/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+<style>
+h1#login{
+	position: absolute;
+	left: 45%;
+	top: 10%;
+    height:10%;
+}
+input#username{
+	position: absolute;
+	left: 40%;
+	top: 30%;
+	width:20%;
+	height:8%;
+}
+input#password{
+	position: absolute;
+	left: 40%;
+	top: 40%;
+	width:20%;
+    height:8%;
+}
+div#loginfail{
+	position: absolute;
+	left: 40%;
+	top: 48%;
+	height:3%;
+}
+button#b1{
+	position: absolute;
+	left: 40%;
+	top: 53%;
+	width:9%;
+	height:10%;
+}
+button#b2{
+	position: absolute;
+	left: 51%;
+	top: 53%;
+	width:9%;
+	height:10%;
+}
+</style>
+
+<script>
+var number = 0;
+
+function up(){
+	document.getElementById("loginfail").innerHTML="incorrect username or password";
+}
+</script>
+<html>
+<h1 id="login">Login</h1>
+<body>
+<input id="username" class="form-control" type="text" placeholder="username">
+<input id="password" class="form-control" type="password" placeholder="password">
+<button id="b1" class="btn btn-primary" onmouseup="up()">login</button>
+<a href="http://127.0.0.1:8080/register.html"><button id="b2" class="btn btn-success">register</button></a>
+<div class="text-danger" id="loginfail"></div>
+</body>
+</html>
