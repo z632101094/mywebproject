@@ -1,7 +1,9 @@
-package com.mywebprojet.springboot.entity;
- 
-public class User {
-  
+package com.mywebproject.request;
+
+
+
+public class UserRequest{
+	
     private int id;
     private String name;
     private String userName;

@@ -1,7 +1,9 @@
-package com.mywebprojet.springboot.service;
+package com.mywebproject.dao;
+
 import java.util.List;
 
-public interface BaseService<T>{
+public interface BaseDao<T>
+{
 
     public T get(Integer id);
 
@@ -16,5 +18,5 @@ public interface BaseService<T>{
     public void delete(Integer id);
 
     public void delete(String[] ids);
-
+    
 }
