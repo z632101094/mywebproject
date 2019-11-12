@@ -30,7 +30,7 @@ input#password2{
 	width:20%;
     height:8%;
 }
-button#b1{
+input#register{
 	position: absolute;
 	left: 40%;
 	top: 63%;
@@ -42,9 +42,11 @@ button#b1{
 <html>
 <h1 id="register">Register</h1>
 <body>
-<input id="username" class="form-control" type="text" placeholder="username">
-<input id="password" class="form-control" type="password" placeholder="password">
+<form action="user/register" method="post">
+<input name = "userName" id="username" class="form-control" type="text" placeholder="username">
+<input name = "password" id="password" class="form-control" type="password" placeholder="password">
+<input id="register" class="btn btn-primary" type = "submit" value = "Register">
+</form>
 <input id="password2" class="form-control" type="password" placeholder="password again">
-<button id="b1" class="btn btn-primary" >Register</button>
 </body>
 </html>
