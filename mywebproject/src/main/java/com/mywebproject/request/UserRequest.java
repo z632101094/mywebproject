@@ -14,10 +14,10 @@ public class UserRequest{
     public void setId(int id) {
         this.id = id;
     }
-    public String getName() {
+    public String getname() {
         return name;
     }
-    public void setName(String name) {
+    public void setname(String name) {
         this.name = name;
     }
     public String getUserName() {
@@ -26,7 +26,7 @@ public class UserRequest{
     public void setUserName(String userName) {
         this.userName = userName;
     }
-    public String getPassord() {
+    public String getPassword() {
         return password;
     }
     public void setPassword(String password) {

@@ -8,7 +8,7 @@ public interface BaseService<T>{
     public T get(Integer id);
 
     public List<T> selectListByEntity(T entity);
-    
+
     public Integer save(T entity);
 
     public void update(T entity);

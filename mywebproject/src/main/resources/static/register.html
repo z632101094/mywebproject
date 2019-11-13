@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <script src="library/jquery-3.4.1/jquery-3.4.1.min.js"></script>
+<script src="library/vue-2.6.10/vue.js"></script>
 <link href="library/bootstrap-4.3.1-dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="library/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <style>
 h1#register{
 	position: absolute;
@@ -30,7 +32,7 @@ input#repassword{
 	width:20%;
     height:8%;
 }
-input#register{
+button#register{
 	position: absolute;
 	left: 40%;
 	top: 63%;
@@ -44,7 +46,23 @@ div#passwordnotsame{
 	height:8%;
 }
 </style>
-
+<script>
+$(function(){
+	new Vue({
+	      el: '#div1',
+	      data:{
+	        user:{userName:'',password:''}
+	      },
+	      methods:{
+	          submit:function(){
+	        	  axios.post('user/register',this.user).then(function(response) {
+                      var result = response;
+                  });
+	          }
+	      }
+	    })
+})
+</script>
 <script>
 function checkPassword(){
 	if (document.getElementById("password").value != document.getElementById("repassword").value)
@@ -54,17 +72,20 @@ function checkUserName(){
 	
 }
 </script>
-
 <html>
 <h1 id="register">Register</h1>
 <body>
-<form action="user/register" method="post">
-<input name = "userName" id="username" class="form-control" type="text" placeholder="username">
-<input name = "password" id="password" class="form-control" type="password" placeholder="password">
-<input name = "rePassword" id="repassword" class="form-control" type="password" onchange="checkPassword()" placeholder="confirm password">
-<input id="register" class="btn btn-primary" type = "submit" value = "Register">
-</form>
+<div id="div1">
+<input v-model="user.userName" id="username" class="form-control" type="text" placeholder="username">
+<input v-model="user.password" id="password" class="form-control" type="password" placeholder="password">
+<input id="repassword" class="form-control" type="password" onchange="checkPassword()" placeholder="confirm password">
+<button @click="submit" id="register" class="btn btn-primary" type = "submit" >Submit</button>
+
+
+
+</div>
 <div class="text-danger" id="passwordnotsame"></div>
+
 
 </body>
 </html>
