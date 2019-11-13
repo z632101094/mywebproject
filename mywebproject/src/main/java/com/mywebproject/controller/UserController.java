@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.mywebproject.entity.User;
-import com.mywebproject.reponse.ApiResult;
+import com.mywebproject.reponse.Result;
 import com.mywebproject.service.UserService;
 
 import net.minidev.json.JSONObject;
@@ -34,26 +34,19 @@ public class UserController {
 
      */
     @RequestMapping(value = "register", method = RequestMethod.POST)
-    public ApiResult register(@RequestBody User user) {
-        ApiResult apiResult = new ApiResult();
+    public Object register(@RequestBody User user) {
     	if (userService.selectByUserName(user.getUserName()) != null) {
-            apiResult.setSuccess(false);
-            apiResult.setCode(-1);
-            apiResult.setMessage("Username already exist");
-    		return apiResult;
+            String message ="Username already exist";
+            return Result.fail(message);
     	}
     	int result = userService.save(user);
     	if (result == 1) {
-            apiResult.setSuccess(true);
-            apiResult.setCode(0);
-            apiResult.setMessage("Register successfully");
-    		return apiResult;
+            String message ="Register successfully";
+            return Result.success(message);
     	}
     	else {
-            apiResult.setSuccess(false);
-            apiResult.setCode(-1);
-            apiResult.setMessage("Unknown");
-    		return apiResult;
+            String message ="Unknown failing";
+            return Result.fail(message);
     	}
     }
 }

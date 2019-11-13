@@ -56,7 +56,15 @@ $(function(){
 	      methods:{
 	          submit:function(){
 	        	  axios.post('user/register',this.user).then(function(response) {
-                      var result = response;
+                      var result = response.data;
+                      if(result.code==0){
+    	        		  document.getElementById("loginfail").innerHTML="success";
+                    	  $("span.errorMessage").html(result);
+                      }
+                      else{
+    	        		  document.getElementById("loginfail").innerHTML="fail";
+                          $("span.errorMessage").html(result);
+                      }
                   });
 	          }
 	      }
@@ -81,7 +89,7 @@ function checkUserName(){
 <input id="repassword" class="form-control" type="password" onchange="checkPassword()" placeholder="confirm password">
 <button @click="submit" id="register" class="btn btn-primary" type = "submit" >Submit</button>
 
-
+<div class="text-danger" id="loginfail"></div>
 
 </div>
 <div class="text-danger" id="passwordnotsame"></div>
