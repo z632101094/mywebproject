@@ -5,45 +5,21 @@
 <script src="library/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <style>
-h1#register{
+td#header{
+font-size:130%;font-weight:700;
+
+}
+table.registerTable{
 	position: absolute;
-	left: 42%;
+	left: 40%;
 	top: 10%;
-    height:10%;
+	height: 200px;
 }
-input#username{
-	position: absolute;
-	left: 40%;
-	top: 30%;
-	width:20%;
-	height:8%;
-}
-input#password{
-	position: absolute;
-	left: 40%;
-	top: 40%;
-	width:20%;
-    height:8%;
-}
-input#repassword{
-	position: absolute;
-	left: 40%;
-	top: 50%;
-	width:20%;
-    height:8%;
-}
-button#register{
-	position: absolute;
-	left: 40%;
-	top: 63%;
-	width:20%;
-	height:10%;
-}
-div#passwordnotsame{
-	position: absolute;
-	left: 60%;
-	top: 50%;
-	height:8%;
+div.registerErrorMessageDiv {
+	width: 600px;
+	margin: 0px auto;
+	height: 50px;
+	visibility: hidden;
 }
 </style>
 <script>
@@ -51,21 +27,52 @@ $(function(){
 	new Vue({
 	      el: '#div1',
 	      data:{
-	        user:{userName:'',password:''}
+			uri: 'user/register',
+	        user:{userName:'', password:'', repeatPassword:''}
 	      },
 	      methods:{
-	          submit:function(){
-	        	  axios.post('user/register',this.user).then(function(response) {
+	          submit:function(){ 
+                  if(0==this.user.userName.length){
+                      $("span.errorMessage").html("Please Enter Username");
+                      $("div.registerErrorMessageDiv").css("visibility","visible");
+                      return;
+                  }
+                  if(0==this.user.password.length){
+                      $("span.errorMessage").html("Please Enter Password");
+                      $("div.registerErrorMessageDiv").css("visibility","visible");
+                      return;
+                  }
+                  if(0==this.user.repeatPassword.length){
+                      $("span.errorMessage").html("Please Confirm Password");
+                      $("div.registerErrorMessageDiv").css("visibility","visible");
+                      return;
+                  }
+                  if(this.user.password !=this.user.repeatPassword){
+                      $("span.errorMessage").html("Confirm Password not equal");
+                      $("div.registerErrorMessageDiv").css("visibility","visible");
+                      return;
+                  }
+	        	  axios.post(this.uri,this.user).then(function(response) {
                       var result = response.data;
                       if(result.code==0){
-    	        		  document.getElementById("loginfail").innerHTML="success";
-                    	  $("span.errorMessage").html(result);
+                          location.href="login.html";
                       }
                       else{
-    	        		  document.getElementById("loginfail").innerHTML="fail";
-                          $("span.errorMessage").html(result);
+                          $("span.errorMessage").html(result.message);
+                          $("div.registerErrorMessageDiv").css("visibility","visible");
                       }
                   });
+	          }
+	      }
+	    })
+	new Vue({
+	      el: '#div2',
+	      data: {
+	          clickNumber:0
+	      },
+	      methods:{
+	          count: function(){
+	              this.clickNumber++;
 	          }
 	      }
 	    })
@@ -74,26 +81,51 @@ $(function(){
 <script>
 function checkPassword(){
 	if (document.getElementById("password").value != document.getElementById("repassword").value)
-		document.getElementById("passwordnotsame").innerHTML="Unequal";
-}
-function checkUserName(){
-	
+		document.getElementById("passwordnotequal").innerHTML="Confirm Password not equal";
 }
 </script>
 <html>
-<h1 id="register">Register</h1>
+
 <body>
 <div id="div1">
-<input v-model="user.userName" id="username" class="form-control" type="text" placeholder="username">
-<input v-model="user.password" id="password" class="form-control" type="password" placeholder="password">
-<input id="repassword" class="form-control" type="password" onchange="checkPassword()" placeholder="confirm password">
-<button @click="submit" id="register" class="btn btn-primary" type = "submit" >Submit</button>
+        <div class="registerErrorMessageDiv">
+            <div class="alert alert-danger" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
+                <span class="errorMessage"></span>
+            </div>
+        </div>
+	<table class="registerTable" align="center">
+	    <tr>
+	        <td height = "50px" id = "header" align="left">Create Account</td>
+	    </tr>
+	    <tr>
+	        <td align="left">Username</td>
+	    </tr>
+	    <tr>
+	        <td height = "50px"><input class="form-control" v-model="user.userName"> </td>
+	    </tr>
+	    <tr>
+	        <td align="left">Password</td>
+	    </tr>
+	    <tr>
+	        <td height = "50px" class = "input"><input id ="password" class="form-control" v-model="user.password"  type="password"  placeholder="At least 6 characters" > </td>
+	    </tr>
+	    <tr>
+	        <td align="left">Re-enter password</td>
+	    </tr>
+	    <tr>
+	        <td height = "50px" ><input id ="repassword" class="form-control" onchange="checkPassword()" v-model="user.repeatPassword" type="password"> </td>
+	        <td class="text-danger" id="passwordnotequal"></td>
+	    </tr>     
+	    <tr>
+	        <td colspan="2" height = "50px">
+	            <a ><button @click="submit" class="btn btn-primary">Create Your Account</button></a>
+	        </td>
+	    </tr>
+	</table>
+</div> 
 
-<div class="text-danger" id="loginfail"></div>
 
-</div>
-<div class="text-danger" id="passwordnotsame"></div>
-
-
+   
 </body>
 </html>
