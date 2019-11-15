@@ -22,13 +22,16 @@ public class UserController {
     /**
 
      */
-    @RequestMapping(value = "checkUsername", method = RequestMethod.POST)
-    public String checkUsername(String username) {
-    	System.out.print(username+"\n");
-    	User user = new User();
-    	user.setUsername(username);
-    	if (userService.selectByUsername(user.getUsername()) != null) return "Already exist";
-    	else return "Not exist";
+    @RequestMapping(value = "login", method = RequestMethod.POST)
+    public Object checkUsername(@RequestBody User user) {
+    	if (userService.selectByUsername(user.getUsername()) != null) {
+            String message ="Sign-in Successfully";
+            return Result.success(message);
+    	}
+    	else {
+            String message ="Username or password wrong";
+            return Result.fail(message);
+    	}
     }
     /**
 

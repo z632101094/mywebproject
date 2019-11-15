@@ -25,12 +25,13 @@ div.registerErrorMessageDiv {
 </style>
 <script>
 $(function(){
-	new Vue({
-	      el: '#div1',
-	      data:{
+    var dataVue = {
 			uri: 'user/register',
 	        user:{username:'', password:'', repeatPassword:''}
-	      },
+        };
+    var vue = new Vue({
+	      el: '#div1',
+          data: dataVue,
 	      methods:{
 	          submit:function(){ 
                   if(0==this.user.username.length){
@@ -103,7 +104,7 @@ function checkPassword(){
 	        <td height = "50px"><input class="form-control" v-model="user.username" placeholder="Username"> </td>
 	    </tr>
 	    <tr>
-	        <td height = "50px" class = "input"><input id ="password" class="form-control" v-model="user.password"  type="password"  placeholder="Password" > </td>
+	        <td height = "50px"><input id ="password" class="form-control" v-model="user.password"  type="password"  placeholder="Password" > </td>
 	    </tr>
 	    <tr>
 	        <td height = "50px" ><input id ="rePassword" class="form-control" onchange="checkPassword()" v-model="user.repeatPassword" type="password" placeholder="Re-enter password"> </td>
