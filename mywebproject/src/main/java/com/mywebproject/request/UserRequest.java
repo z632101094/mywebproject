@@ -6,7 +6,7 @@ public class UserRequest{
 	
     private int id;
     private String name;
-    private String userName;
+    private String username;
     private String password;
     public int getId() {
         return id;
@@ -14,17 +14,17 @@ public class UserRequest{
     public void setId(int id) {
         this.id = id;
     }
-    public String getname() {
+    public String getName() {
         return name;
     }
-    public void setname(String name) {
+    public void setName(String name) {
         this.name = name;
     }
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
     public String getPassword() {
         return password;

@@ -7,5 +7,5 @@ import com.mywebproject.entity.User;
 
 @Service
 public interface UserService extends BaseService<User>{
-	User selectByUserName(String userName);
+	User selectByUsername(String username);
 }

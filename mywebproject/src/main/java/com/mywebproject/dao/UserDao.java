@@ -7,5 +7,5 @@ import com.mywebproject.request.UserRequest;
 
 @Repository(value = "userDao")
 public interface UserDao extends BaseDao<User>{
-    User selectByUserName(UserRequest userRequest);
+    User selectByUsername(UserRequest userRequest);
 }

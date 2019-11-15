@@ -22,11 +22,11 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
         super.setBaseDao(userDao);
     }
 	@Override
-	public User selectByUserName(String userName) {
+	public User selectByUsername(String username) {
 		
         UserRequest userRequest = new UserRequest();
-        userRequest.setUserName(userName);
-        return userDao.selectByUserName(userRequest);
+        userRequest.setUsername(username);
+        return userDao.selectByUsername(userRequest);
 	}
 	
 }

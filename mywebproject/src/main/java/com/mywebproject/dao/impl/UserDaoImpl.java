@@ -10,7 +10,7 @@ import com.mywebproject.request.UserRequest;
 public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao{
 
     @Override
-    public User selectByUserName(UserRequest userRequest) {
-        return sqlSessionTemplate.selectOne("tbl_user.selectByUserName",userRequest);
+    public User selectByUsername(UserRequest userRequest) {
+        return sqlSessionTemplate.selectOne("tbl_user.selectByUsername",userRequest);
     }
 }

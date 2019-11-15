@@ -22,12 +22,12 @@ public class UserController {
     /**
 
      */
-    @RequestMapping(value = "checkUserName", method = RequestMethod.POST)
-    public String checkUserName(String userName) {
-    	System.out.print(userName+"\n");
+    @RequestMapping(value = "checkUsername", method = RequestMethod.POST)
+    public String checkUsername(String username) {
+    	System.out.print(username+"\n");
     	User user = new User();
-    	user.setUserName(userName);
-    	if (userService.selectByUserName(user.getUserName()) != null) return "Already exist";
+    	user.setUsername(username);
+    	if (userService.selectByUsername(user.getUsername()) != null) return "Already exist";
     	else return "Not exist";
     }
     /**
@@ -35,7 +35,7 @@ public class UserController {
      */
     @RequestMapping(value = "register", method = RequestMethod.POST)
     public Object register(@RequestBody User user) {
-    	if (userService.selectByUserName(user.getUserName()) != null) {
+    	if (userService.selectByUsername(user.getUsername()) != null) {
             String message ="Username already exist";
             return Result.fail(message);
     	}

@@ -4,7 +4,7 @@ public class User {
   
     private int id;
     private String name;
-    private String userName;
+    private String username;
     private String password;
     private String repeatPassword;
     public int getId() {
@@ -19,11 +19,11 @@ public class User {
     public void setName(String name) {
         this.name = name;
     }
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
     public String getPassword() {
         return password;
