@@ -1,4 +1,4 @@
-package com.mywebproject.entity;
+package com.example.springboot.mywebproject.entity;
  
 public class User {
   

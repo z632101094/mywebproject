@@ -1,4 +1,4 @@
-package com.mywebproject.dao;
+package com.example.springboot.mywebproject.dao;
 
 import java.util.List;
 

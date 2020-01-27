@@ -1,10 +1,11 @@
-package com.mywebproject.dao.impl;
+package com.example.springboot.mywebproject.dao.impl;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
-import com.mywebproject.dao.BaseDao;
+
+import com.example.springboot.mywebproject.dao.BaseDao;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;

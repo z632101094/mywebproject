@@ -1,4 +1,4 @@
-package com.mywebproject.service;
+package com.example.springboot.mywebproject.service;
 import java.util.List;
 
 import org.springframework.stereotype.Service;

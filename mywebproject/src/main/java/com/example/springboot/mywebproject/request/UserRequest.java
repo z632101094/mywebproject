@@ -1,4 +1,4 @@
-package com.mywebproject.request;
+package com.example.springboot.mywebproject.request;
 
 
 

@@ -1,4 +1,4 @@
-package com.mywebproject;
+package com.example.springboot.mywebproject;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

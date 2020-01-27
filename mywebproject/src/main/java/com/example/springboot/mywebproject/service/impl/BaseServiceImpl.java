@@ -1,9 +1,9 @@
-package com.mywebproject.service.impl;
+package com.example.springboot.mywebproject.service.impl;
 
 import java.util.List;
 
-import com.mywebproject.dao.BaseDao;
-import com.mywebproject.service.BaseService;
+import com.example.springboot.mywebproject.dao.BaseDao;
+import com.example.springboot.mywebproject.service.BaseService;
 
 public class BaseServiceImpl<T>implements BaseService<T> {
 
